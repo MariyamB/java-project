@@ -4,8 +4,7 @@ stages {
             echo "Building application..."
             script
             {
-            ant -f test.xml -v
-            buildFile('reports/result.xml')
+            ant -f reports/result.xml.xml -v
             }
         }
     }
