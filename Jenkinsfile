@@ -1,6 +1,9 @@
-node ('linux'){
- stage 'Build and Test'
- env.PATH = "${tool 'Ant'}/bin:${env.PATH}"
- checkout scm
- sh 'ant build'
+job('example') {
+    steps {
+        ant {
+            ant -f test.xml -v
+            buildFile('reports/result.xml')
+            antInstallation('Ant 1.8')
+        }
+    }
 }
