@@ -13,7 +13,6 @@ pipeline {
     sh "ant -f build.xml -v"
    }
   }
-  node('linux') {
    stage("Deploy") {
     {
      steps {
