@@ -24,4 +24,9 @@ agent {label 'linux'}
        sh "aws s3 cp /workspace/java-pipeline/dist/ s3://mariyam-assignment9/ --recursive"
       }
    }
+   stage("Report")
+   {
+   sh "aws cloudformation describe-stack-resources --region us-east-1 --stack-name jenkins-stack"
+
+   }
   }
