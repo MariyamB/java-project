@@ -1,4 +1,4 @@
-node('linux') {
+pipeline {
  stages {
   stage("Unit Test") {
    steps {
@@ -13,6 +13,9 @@ node('linux') {
    }
   }
   }
+  }
+  node('linux')
+  {
    stage("Deploy") {
      steps {
       withCredentials([
