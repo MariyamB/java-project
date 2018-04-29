@@ -12,16 +12,19 @@ agent any
     echo "Testing application..."
     sh "ant -f build.xml -v"
    }
+
   }
-  }
-  }
-  node('linux')
-  {
+
    stage("Deploy") {
+   node('linux')
+   {
       withCredentials([
        [$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: '5eb9f71b-ee0c-4225-9e96-0cbde8f8daaa', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']
       ]) {
-         sh "aws-profile connectors-staging aws s3 cp ${WORKSPACE} s3://mariyam-assignment9/ --recursive"
+       sh "aws s3 cp /var/jenkins_home/workspace/java-pipeline/dist/rectangle-41.jar s3://mariyam-assignment9/ --recursive"
       }
    }
+  }
+
+  }
   }
