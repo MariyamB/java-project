@@ -1,6 +1,6 @@
 pipeline {
 agent {
-label 'node'
+label 'linux'
 }
  stages {
   stage("Unit Test") {
@@ -17,8 +17,8 @@ label 'node'
 
   }
 
+} node('linux'){
    stage("Deploy") {
-   node('linux')
    {
       withCredentials([
        [$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: '5eb9f71b-ee0c-4225-9e96-0cbde8f8daaa', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']
@@ -27,6 +27,5 @@ label 'node'
       }
    }
   }
-
   }
   }
