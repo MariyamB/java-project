@@ -22,13 +22,8 @@ node {
     }
 
     stage('deploy') {
-      if (env.BRANCH_NAME=="master") {
+    echo 'deploy the application'
             deploy_prod()
-        }
-        else
-        {
-        echo 'deploy skipped'
-        }
     }
 }
 
