@@ -1,5 +1,4 @@
   node('linux'){
- stages {
   stage("Unit Test") {
    steps {
     echo "Testing application..."
@@ -18,9 +17,7 @@
       withCredentials([
        [$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: '5eb9f71b-ee0c-4225-9e96-0cbde8f8daaa', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']
       ]) {
-       sh "aws s3 cp $rectangle-26.jar s3://mariyam-assignment9/ --recursive"
+       sh "aws s3 cp $rectangle-27.jar s3://mariyam-assignment9/ --recursive"
       }
-
-     }
    }
   }
