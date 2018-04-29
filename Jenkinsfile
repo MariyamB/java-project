@@ -1,5 +1,5 @@
 pipeline {
-agent node
+agent {label 'node'}
  stages {
   stage("Unit Test") {
    steps {
