@@ -1,5 +1,5 @@
 #!groovy
-node('linux') {
+node{
     stage('check environment') {
     if (env.BRANCH_NAME=="master") {
             env.DEV_ENV = "production"
