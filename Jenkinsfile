@@ -1,6 +1,6 @@
 pipeline {
 agent {
-       label 'master'
+       label 'linux'
    }
  stages {
   stage("Unit Test") {
