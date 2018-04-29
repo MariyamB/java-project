@@ -39,5 +39,5 @@ node {
 
 
 def deploy_prod() {
-    sh 'aws s3 cp ./var/jenkins_home/workspace/java-pipeline/dist/rectangle-46.jar s3://mariyam-assignment9/ --recursive us-east-1'
+    sh 'aws s3 cp ./var/jenkins_home/workspace/java-pipeline/dist/rectangle-46.jar s3://mariyam-assignment9/ --recursive'
 }
