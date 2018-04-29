@@ -1,5 +1,7 @@
 pipeline {
-agent {label 'linux'}
+ agent {
+  label 'linux'
+ }
  stages {
   stage("Unit Test") {
    steps {
@@ -13,18 +15,16 @@ agent {label 'linux'}
     sh "ant -f build.xml -v"
    }
   }
-  }
-  }
-  node('linux')
+ }
+}
+node('linux') {
+ withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'faef8bbd-5e46-476c-b068-792910928c13', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']])
   {
-  withCredentials([
-   [$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: '5eb9f71b-ee0c-4225-9e96-0cbde8f8daaa', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']
-  ]){
-   stage("Deploy") {
-       sh "aws s3 cp /workspace/java-pipeline/dist/ s3://mariyam-assignment9/ --recursive"
-      }
-   stage("Report"){
-   sh "aws cloudformation describe-stack-resources --region us-east-1 --stack-name jenkins-stack"
-    }
-   }
+  stage("Deploy") {
+   sh "aws s3 cp /workspace/java-pipeline/dist/ s3://mariyam-assignment9/ --recursive"
   }
+  stage("Report") {
+   sh "aws cloudformation describe-stack-resources --region us-east-1 --stack-name jenkins"
+  }
+ }
+}
