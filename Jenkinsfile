@@ -10,7 +10,7 @@ pipeline {
           stage("Build") {
           steps {
             echo "Building application..."
-            sh "ant -f build.xml -v"
+            sh "cp /var/jenkins_home/workspace/java-pipeline/dist/rectangle-1.jar http://s3.amazonaws.com/mariyam-assignment9"
             }
         }
         }
