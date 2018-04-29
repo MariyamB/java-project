@@ -22,7 +22,7 @@ node {
     }
 
     stage('deploy') {
-      if (env.NODE_ENV=="production") {
+      if (env.BRANCH_NAME=="master") {
             deploy_prod()
         }
         else
