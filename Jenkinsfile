@@ -1,4 +1,4 @@
-pipeline {
+node('linux') {
     agent any
     stages {
     stage("Unit Test") {
