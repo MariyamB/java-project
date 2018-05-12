@@ -1,7 +1,7 @@
 properties([pipelineTriggers([githubPush()])])
 
 node('linux') {   
-	stage('Test') {    
+	stage('TestTest') {    
 		git 'https://github.com/MariyamB/java-project.git'
 		sh 'ant -buildfile test.xml'   
 	}   
