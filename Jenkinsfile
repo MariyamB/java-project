@@ -10,3 +10,4 @@ node('linux') {
         stage('Results') {
                 junit 'reports/*.xml'
         }
+}
